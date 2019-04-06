@@ -1,0 +1,49 @@
+@import 'var';
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+/* This CSS will print because %message-shared is extended. */
+%message-shared {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+// This CSS won't print because %equal-heights is never extended.
+%equal-heights {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.message {
+  @extend %message-shared;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success {
+  @extend %message-shared;
+  border-color: green;
+}
+
+.error {
+  @extend %message-shared;
+  border-color: red;
+}
+
+.warning {
+  @extend %message-shared;
+  border-color: yellow;
+}
+
+.example {
+  display: grid;
+  transition: all .5s;
+  user-select: none;
+  background: linear-gradient(to bottom, white, black);
+}
+
